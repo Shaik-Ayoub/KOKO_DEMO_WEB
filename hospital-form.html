@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Information Form</title>
+    <link rel="stylesheet" href="styles2.css">
+    <style>
+        /* Loader icon style */
+        .progress-bar {
+            display: none; /* Initially hidden */
+            width: 100%;
+            height: 20px;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .progress {
+            width: 0%;
+            height: 100%;
+            background-color: #4caf50; /* Green color for the progress */
+            border-radius: 5px;
+            transition: width 0.4s ease;
+        }
+        /* Style for deployment message */
+        .form-container {
+            text-align: center;
+        }
+
+        .deployed-message {
+            display: none;
+            font-size: 1.2em;
+            color:  #008080;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body class="index-page">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">YourLogo</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#forms">Form Templates</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <div class="form-container">
+        <h2>Hospital Information Form</h2>
+
+        <!-- General Information Section -->
+        <fieldset>
+            <legend>General Information</legend>
+            <label>Hospital Name:</label>
+            <input type="text" name="hospital_name" value="City Health Hospital">
+
+            <label>Hospital Address:</label>
+            <input type="text" name="hospital_address" value="456 Health Blvd">
+
+            <label>City:</label>
+            <input type="text" name="city" value="Springfield">
+
+            <label>State/Province:</label>
+            <input type="text" name="state" value="Illinois">
+
+            <label>Zip/Postal Code:</label>
+            <input type="text" name="zip_code" value="62701">
+
+            <label>Country:</label>
+            <input type="text" name="country" value="USA">
+
+            <label>Hospital Phone Number:</label>
+            <input type="tel" name="phone" value="(217) 555-0199">
+
+            <label>Hospital Email:</label>
+            <input type="email" name="email" value="info@cityhealthhospital.com">
+
+            <label>Website URL:</label>
+            <input type="url" name="website" value="https://www.cityhealthhospital.com">
+        </fieldset>
+
+        <!-- Contact Person Section -->
+        <fieldset>
+            <legend>Contact Person</legend>
+            <label>Name:</label>
+            <input type="text" name="contact_name" value="Dr. Sarah Johnson">
+
+            <label>Position/Title:</label>
+            <input type="text" name="contact_title" value="Medical Director">
+
+            <label>Phone Number:</label>
+            <input type="tel" name="contact_phone" value="(217) 555-0198">
+
+            <label>Email:</label>
+            <input type="email" name="contact_email" value="sarah.johnson@cityhealthhospital.com">
+        </fieldset>
+
+        <!-- Hospital Description Section -->
+        <fieldset>
+            <legend>Hospital Description</legend>
+            <label>Brief Description of the Hospital:</label>
+            <textarea
+                name="hospital_description">A state-of-the-art hospital providing comprehensive healthcare services for the community.</textarea>
+        </fieldset>
+
+        <!-- Services and Facilities Section -->
+        <fieldset>
+            <legend>Services and Facilities</legend>
+            <label>Number of Beds:</label>
+            <input type="number" name="beds" value="250">
+
+            <label>Types of Services Offered:</label>
+            <input type="text" name="services" value="Emergency, Surgery, Cardiology, Maternity, Pediatrics">
+
+            <label>Visiting Hours:</label>
+            <input type="text" name="visiting_hours" value="9:00 AM - 8:00 PM">
+
+            <label>Emergency Services (Yes/No):</label>
+            <input type="text" name="emergency_services" value="Yes">
+
+            <label>Pharmacy Services (Yes/No):</label>
+            <input type="text" name="pharmacy" value="Yes">
+
+            <label>Ambulance Services (Yes/No):</label>
+            <input type="text" name="ambulance" value="Yes">
+
+            <label>Laboratory Services (Yes/No):</label>
+            <input type="text" name="laboratory" value="Yes">
+
+            <label>ICU Facilities (Yes/No):</label>
+            <input type="text" name="icu" value="Yes">
+
+            <label>Parking Facilities (Yes/No, if Yes, details):</label>
+            <input type="text" name="parking" value="Yes, Multi-level Parking">
+
+            <label>Room Types Available (e.g., Private, Semi-Private, General):</label>
+            <input type="text" name="room_types" value="Private, Semi-Private, General">
+
+            <label>Accessibility Features (e.g., Wheelchair Ramps, Elevators):</label>
+            <input type="text" name="accessibility" value="Wheelchair Ramps, Elevators, Accessible Restrooms">
+
+            <label>Special Services (e.g., Radiology, Rehabilitation):</label>
+            <input type="text" name="special_services" value="Radiology, Rehabilitation, Physical Therapy">
+        </fieldset>
+
+        <!-- Room Pricing Section -->
+        <fieldset>
+            <legend>Room Pricing</legend>
+            <label>Price of Private Room per Day:</label>
+            <input type="number" name="price_private" value="300">
+
+            <label>Price of Semi-Private Room per Day:</label>
+            <input type="number" name="price_semi_private" value="200">
+
+            <label>Price of General Ward per Day:</label>
+            <input type="number" name="price_general" value="100">
+
+            <label>Additional Charges (e.g., Equipment, Medications):</label>
+            <textarea name="additional_charges">Medications, Lab Tests, Imaging</textarea>
+        </fieldset>
+
+        <!-- Patient Information Section -->
+        <fieldset>
+            <legend>Patient Information</legend>
+            <label>Accepted Insurance Providers:</label>
+            <textarea name="insurance_providers">HealthCare Plus, MediCover, United Health, Blue Cross</textarea>
+
+            <label>Payment Methods Accepted:</label>
+            <input type="text" name="payment_methods" value="Credit Card, Cash, Insurance, Online Payment">
+
+            <label>Visiting Guidelines:</label>
+            <textarea
+                name="visiting_guidelines">Only two visitors per patient, children under 12 must be supervised.</textarea>
+
+            <label>Special Packages:</label>
+            <textarea name="special_packages">Maternity Package, Cardiac Package, Orthopedic Package</textarea>
+
+            <label>Booking Link for Services:</label>
+            <input type="url" name="booking_link" value="https://www.cityhealthhospital.com/book-services">
+        </fieldset>
+
+        <!-- Frequently Asked Questions Section -->
+        <fieldset>
+            <legend>Frequently Asked Questions</legend>
+            <label>Is there an on-site pharmacy?</label>
+            <input type="text" name="faq1" value="Yes">
+
+            <label>Does the hospital offer 24/7 emergency services?</label>
+            <input type="text" name="faq2" value="Yes">
+
+            <label>Is there a cafeteria for visitors?</label>
+            <input type="text" name="faq3" value="Yes, open from 7:00 AM to 7:00 PM">
+
+            <label>What are the parking options?</label>
+            <input type="text" name="faq4" value="Multi-level parking available">
+
+            <label>Does the hospital provide interpreter services?</label>
+            <input type="text" name="faq5" value="Yes, for major languages">
+
+            <label>Can family members stay overnight with the patient?</label>
+            <input type="text" name="faq6" value="Yes, for private rooms only">
+
+            <label>What insurance providers are accepted?</label>
+            <input type="text" name="faq7" value="HealthCare Plus, MediCover, United Health">
+
+            <label>Are there any restrictions on visiting hours?</label>
+            <input type="text" name="faq8" value="Yes, visiting hours are from 9:00 AM to 8:00 PM">
+
+            <label>Is there a helipad for air ambulance services?</label>
+            <input type="text" name="faq9" value="Yes">
+
+            <label>Any other commonly asked questions:</label>
+            <textarea name="faq10">Patient dietary restrictions, outpatient services availability</textarea>
+        </fieldset>
+
+        <!-- Additional Information Section -->
+        <fieldset>
+            <legend>Additional Information</legend>
+            <label>Any special policies or information not covered above:</label>
+            <textarea name="additional_info">Covid-19 safety protocols, patient confidentiality policy</textarea>
+        </fieldset>
+
+        <!-- Submit Button -->
+        <button id="submit-btn" type="submit">Submit</button>
+
+        <div class="progress-bar" id="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+    <p class="deployed-message" id="deployed-message">Deployed Agent on +1234567890</p>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Your Company. All rights reserved.</p>
+            <!-- <div class="social-links">
+                <a href="#"><img src="https://via.placeholder.com/24" alt="Facebook"></a>
+                <a href="#"><img src="https://via.placeholder.com/24" alt="Twitter"></a>
+                <a href="#"><img src="https://via.placeholder.com/24" alt="LinkedIn"></a>
+            </div> -->
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('toggle');
+        });
+
+        const submitBtn = document.getElementById('submit-btn');
+const progressBar = document.getElementById('progress-bar');
+const progress = document.getElementById('progress');
+const deployedMessage = document.getElementById('deployed-message');
+
+submitBtn.addEventListener('click', () => {
+    // Hide the submit button and show the progress bar
+    submitBtn.style.display = 'none';
+    progressBar.style.display = 'block';
+
+    // Animate the progress bar over 15 seconds
+    let progressPercentage = 0;
+    const interval = setInterval(() => {
+        progressPercentage += 1; // Increase the progress by 1% every 150ms
+        progress.style.width = progressPercentage + '%';
+
+        if (progressPercentage >= 100) {
+            clearInterval(interval);
+            progressBar.style.display = 'none';
+            deployedMessage.style.display = 'block';
+            
+            // Redirect to index.html after a short delay
+        }
+    }, 150); // 150ms for each 1% progress over 15 seconds
+});
+
+    </script>
+</body>
+
+</html>

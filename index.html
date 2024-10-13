@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Presentation</title>
+    <link rel="stylesheet" href="styles2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+    <!-- Google Fonts -->
+     
+</head>
+<body class="index-page">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">YourLogo</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#forms">Form Templates</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="home-section">
+        <div class="container">
+            <h1>Welcome to KOKO-AI</h1>
+            <p>Innovating the future with cutting-edge solutions.</p>
+            <a href="#about" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>Koko AI is a cutting-edge platform that seamlessly transforms submitted form data into a fully operational
+                calling assistant. By leveraging advanced AI technology, Koko AI automates the creation process, turning the
+                information provided in a simple form submission into a personalized and responsive assistant. This system
+                is particularly useful for businesses that need quick and efficient communication solutions. Koko AI ensures
+                that each assistant is assigned an
+                available phone number, making the setup process both streamlined and user-friendly.</p>
+        </div>
+    </section>
+
+    <!-- Form Templates Section -->
+    <section id="forms" class="forms-section">
+        <div class="container">
+            <h2>Templates</h2>
+            <div class="forms-grid">
+                <div class="form-card">
+                    <img src="images/hotel.webp" alt="Hotel Form" class="form-image">
+                    <a href="hotel-form.html" class="form-label">Hotel Form</a>
+                </div>
+                <div class="form-card">
+                    <img src="images/hospital.webp" alt="Hospital Form" class="form-image">
+                    <a href="hospital-form.html" class="form-label">Hospital Form</a>
+                </div>
+                <div class="form-card">
+                    <img src="images/custom.webp" alt="Custom Form" class="form-image">
+                    <a href="#custom-form" class="form-label">Custom Form</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Your Company. All rights reserved.</p>
+            <!-- <div class="social-links">
+                <a href="#"><img src="https://via.placeholder.com/24" alt="Facebook"></a>
+                <a href="#"><img src="https://via.placeholder.com/24" alt="Twitter"></a>
+                <a href="#"><img src="https://via.placeholder.com/24" alt="LinkedIn"></a>
+            </div> -->
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu (Optional) -->
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('toggle');
+        });
+    </script>
+    <a href="Razorpay.html" class="pay-now-btn">Pay Now</a>
+
+</body>
+</html>

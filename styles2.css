@@ -1,0 +1,714 @@
+/* -----------------------------------
+   Combined CSS File
+   - Scoped for Index and Razorpay Pages
+------------------------------------ */
+
+/* -----------------------------------
+   Shared Styles
+------------------------------------ */
+
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.index-page .home-section,
+.razorpay-page .pricing-section {
+    padding-top: 70px; /* Add space to avoid collision */
+}
+
+/* Font and Box Sizing */
+html {
+    font-size: 16px;
+}
+
+/* Container */
+.index-page {
+    font-family: 'Montserrat', sans-serif; /* Use Montserrat for index page */
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #008080;
+    color: #ffffff;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    font-family: 'Montserrat', sans-serif; /* Ensure Montserrat font */
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: #ffffff; /* White text color */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #4CAF50; /* Secondary color for hover */
+}
+
+/* Hamburger Menu (Mobile) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background: #ffffff;
+    margin-bottom: 4px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.toggle .span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .span:nth-child(2) {
+    opacity: 0;
+}
+
+.toggle .span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #008080;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+.btn:hover {
+    background-color: #006666; /* Darker teal on hover */
+}
+
+.active-btn {
+    background-color: #ffffff;
+    color: #008080;
+}
+
+.active-btn:hover {
+    background-color: #e0f7fa;
+    color: #444444;
+}
+
+/* Footer */
+.footer {
+    background-color: #008080; /* Teal */
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.footer .social-links a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.footer .social-links img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+}
+
+.footer .social-links a:hover img {
+    filter: brightness(0.8) invert(1);
+}
+
+/* Pay Now Button */
+.pay-now-btn {
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    padding: 15px 30px;
+    background-color: #7e9c9c; /* Teal color */
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+.pay-now-btn:hover {
+    background-color: #006666; /* Darker teal on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* -----------------------------------
+   Index Page Specific Styles
+------------------------------------ */
+.index-page {
+    background-color: #333333; /* Dark Gray */
+    color: #E0E0E0; /* Light Gray Text */
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+}
+
+.index-page .home-section {
+    /* background: url('https://via.placeholder.com/1200x600') no-repeat center center/cover; */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 60px; /* To prevent content from hiding behind navbar */
+}
+
+.index-page .home-section h1 {
+    font-size: 3em;
+    color: #E0E0E0;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.index-page .home-section p {
+    font-size: 1.2em;
+    color: #E0E0E0;
+    margin-bottom: 30px;
+}
+
+.index-page .btn {
+    background-color: #008080;
+    color: #ffffff;
+    border: none;
+}
+
+.index-page .btn:hover {
+    background-color: #006666;
+}
+
+.index-page .about-section {
+    padding: 80px 0;
+    background-color: #444444; /* Slightly lighter gray for cards */
+    text-align: center;
+}
+
+.index-page .about-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #487e7e; /* Teal */
+}
+
+.index-page .about-section p {
+    font-size: 1.1em;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #E0E0E0;
+}
+
+.index-page .forms-section {
+    padding: 80px 0;
+    text-align: center;
+    background-color: #333333; /* Same as body background */
+}
+
+.index-page .forms-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #487e7e; /* Teal */
+}
+
+.index-page .forms-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.index-page .form-card {
+    background-color: #444444; /* Darker card color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.index-page .form-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.index-page .form-image {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.index-page .form-label {
+    font-size: 1em;
+    font-weight: bold;
+    color: #E0E0E0;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+.index-page .form-label:hover {
+    color: #487e7e; /* Use primary color for hover */
+}
+
+/* Responsive Styles for Index Page */
+@media (max-width: 768px) {
+    .index-page .nav-links {
+        position: absolute;
+        right: 0;
+        height: 100vh;
+        top: 60px;
+        background-color: #008080;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
+    }
+
+    .index-page .nav-links.active {
+        transform: translateX(0);
+    }
+
+    .index-page .nav-links li {
+        margin: 20px 0;
+    }
+
+    /* Hamburger Menu for Mobile */
+    .index-page .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        z-index: 2000; /* Ensure it's on top */
+    }
+
+    .index-page .hamburger span {
+        height: 3px;
+        width: 25px;
+        background: #ffffff;
+        margin-bottom: 4px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    /* Toggle hamburger animation when active */
+    .index-page .hamburger.toggle span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .index-page .hamburger.toggle span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .index-page .hamburger.toggle span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .index-page .home-section {
+        padding-top: 100px;
+    }
+
+    .index-page .forms-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+/* -----------------------------------
+   Razorpay Page Specific Styles
+------------------------------------ */
+.razorpay-page {
+    background: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.razorpay-page .pricing-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px; /* Added padding to prevent collision with navbar */
+}
+
+.razorpay-page header {
+    color: hsl(233, 13%, 49%);
+    margin: 3.3rem 0;
+    text-align: center;
+}
+
+.razorpay-page header > h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.razorpay-page .toggle {
+    margin-top: 2rem;
+    color: hsl(234, 14%, 74%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.razorpay-page .toggle-btn {
+    margin: 0 1rem;
+}
+
+.razorpay-page .checkbox {
+    display: none;
+}
+
+.razorpay-page .sub {
+    background: linear-gradient(135deg, rgba(163, 168, 240, 1) 0%, rgba(105, 111, 221, 1) 100%);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 1.6rem;
+    width: 3.3rem;
+    border-radius: 1.6rem;
+    padding: 0.3rem;
+    cursor: pointer;
+}
+
+.razorpay-page .circle {
+    background-color: #fff;
+    height: 1.4rem;
+    width: 1.4rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.razorpay-page .checkbox:checked + .sub {
+    justify-content: flex-end;
+}
+
+.razorpay-page .cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px; /* Space below navbar */
+    margin-bottom: 10vh;
+}
+
+.razorpay-page .card {
+    background-color: #444444; /* Dark gray for consistency */
+    color: #E0E0E0; /* Light gray text color */
+    border-radius: 10px;
+    padding: 20px;
+    width: 280px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.razorpay-page .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+}
+
+.razorpay-page .card.active {
+    background-color: #008080; /* Teal for active card */
+    color: #ffffff; /* White text for contrast */
+}
+
+.razorpay-page .price {
+    font-size: 2.5rem;
+    color: #E0E0E0; /* Light gray */
+    margin: 20px 0;
+}
+
+.razorpay-page .card.active .price {
+    color: #ffffff;
+}
+
+.razorpay-page ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.razorpay-page ul li {
+    padding: 10px 0;
+    text-align: center;
+}
+
+.razorpay-page .pack {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: #E0E0E0;
+}
+
+.razorpay-page .card.active .pack {
+    color: #ffffff;
+}
+
+.razorpay-page .bottom-bar {
+    border-bottom: 1px solid #666666;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.razorpay-page .card.active .bottom-bar {
+    border-bottom: 1px solid #ffffff;
+}
+
+.razorpay-page .bottom-bar {
+    border-bottom: 1px solid hsl(240, 8%, 85%);
+    width: 100%;
+    text-align: center;
+}
+
+.razorpay-page .card.active .bottom-bar {
+    border-bottom: 1px solid hsla(240, 8%, 85%, 0.5);
+}
+
+.razorpay-page .pack {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+/* Responsive Styles for Razorpay Page */
+@media (max-width: 768px) {
+    .razorpay-page .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .razorpay-page .card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .razorpay-page .card.active {
+        transform: scale(1);
+    }
+
+    /* Hamburger Menu for Mobile */
+    .razorpay-page .nav-links {
+        position: absolute;
+        right: 0;
+        height: 100vh;
+        top: 60px;
+        background-color: #008080;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
+    }
+
+    .razorpay-page .nav-links.active {
+        transform: translateX(0);
+    }
+
+    .razorpay-page .nav-links li {
+        margin: 20px 0;
+    }
+
+    .razorpay-page .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        z-index: 2000; /* Ensure it's on top */
+    }
+
+    .razorpay-page .hamburger span {
+        height: 3px;
+        width: 25px;
+        background: #ffffff;
+        margin-bottom: 4px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    /* Toggle hamburger animation when active */
+    .razorpay-page .hamburger.toggle span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .razorpay-page .hamburger.toggle span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .razorpay-page .hamburger.toggle span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
+/* hotel-form css */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    /* padding: 20px; */
+}
+
+.form-container {
+    width: 60%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #008080;
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+legend {
+    font-weight: bold;
+    color: #333;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+input[type="time"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #008080;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #006666;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        width: 90%; /* Adjust width for smaller screens */
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.5em; /* Smaller font size for headings */
+    }
+
+    fieldset {
+        padding: 15px;
+    }
+
+    label {
+        font-size: 0.9em; /* Slightly smaller labels */
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="url"],
+    input[type="number"],
+    input[type="time"],
+    textarea {
+        font-size: 0.9em; /* Smaller font size for input text */
+    }
+
+    button {
+        font-size: 1em; /* Smaller button font */
+        padding: 12px; /* Adjust padding for smaller screens */
+    }
+}
+
+

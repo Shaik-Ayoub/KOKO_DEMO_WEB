@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Razorpay Subscription Tiers</title>
+</head>
+<body>
+  <h1>Choose Your Subscription Tier</h1>
+
+  
+  <div class="card-container">
+    <!-- Tier 3 -->
+    <div class="card">
+      <h2>Tier 3</h2>
+      <p class="price">€10 / month</p>
+      <ul>
+        <li>Basic Features</li>
+        <li>Access to community support</li>
+        <li>10 GB Storage</li>
+      </ul>
+      <button type="button" onclick="payNow(10, 'Tier 3')">Pay Now</button>
+    </div>
+
+    <!-- Tier 2 -->
+    <div class="card">
+      <h2>Tier 2</h2>
+      <p class="price">€15 / month</p>
+      <ul>
+        <li>All Tier 3 features</li>
+        <li>Email support</li>
+        <li>50 GB Storage</li>
+      </ul>
+      <button type="button" onclick="payNow(15, 'Tier 2')">Pay Now</button>
+    </div>
+
+    <!-- Tier 1 -->
+    <div class="card">
+      <h2>Tier 1</h2>
+      <p class="price">€20 / month</p>
+      <ul>
+        <li>All Tier 2 features</li>
+        <li>24/7 priority support</li>
+        <li>Unlimited Storage</li>
+      </ul>
+      <button type="button" onclick="payNow(20, 'Tier 1')">Pay Now</button>
+    </div>
+  </div>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    async function payNow(amount, tier) {
+      // Create order by calling the server endpoint
+      const response = await fetch('/create-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ amount, currency: 'EUR', receipt: tier, notes: {} })
+      });
+
+      const order = await response.json();
+
+      // Open Razorpay Checkout
+      const options = {
+        key: 'rzp_test_nsT1ElDtX6gLGd', // Replace with your Razorpay key_id
+        amount: order.amount,
+        currency: order.currency,
+        name: 'Your Company Name',
+        description: `Payment for ${tier}`,
+        order_id: order.id, // This is the order_id created in the backend
+        callback_url: 'http://localhost:3000/payment-success', // Your success URL
+        prefill: {
+          name: 'Your Name',
+          email: 'your.email@example.com',
+          contact: '9999999999'
+        },
+        theme: {
+          color: '#F37254'
+        },
+        handler: function (response) {
+          fetch('/verify-payment', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature
+            })
+          }).then(res => res.json())
+            .then(data => {
+              if (data.status === 'ok') {
+                window.location.href = '/payment-success';
+              } else {
+                alert('Payment verification failed');
+              }
+            }).catch(error => {
+              console.error('Error:', error);
+              alert('Error verifying payment');
+            });
+        }
+      };
+
+      const rzp = new Razorpay(options);
+      rzp.open();
+    }
+  </script>
+</body>
+</html>
+-----------------------------------------------------------------------------
+
+const express = require('express');
+const Razorpay = require('razorpay');
+const bodyParser = require('body-parser');
+const path = require('path');
+const fs = require('fs');
+require('dotenv').config();
+
+const razorpayKeyId = process.env.RAZORPAY_KEY_ID;
+const razorpayKeySecret = process.env.RAZORPAY_KEY_SECRET;
+const { validateWebhookSignature } = require('razorpay/dist/utils/razorpay-utils');
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Serve static files
+app.use(express.static(path.join(__dirname)));
+
+// Replace with your Razorpay credentials
+const razorpay = new Razorpay({
+  key_id: razorpayKeyId,
+  key_secret: razorpayKeySecret,
+});
+
+// Function to read data from JSON file
+const readData = () => {
+  if (fs.existsSync('orders.json')) {
+    const data = fs.readFileSync('orders.json');
+    return JSON.parse(data);
+  }
+  return [];
+};
+
+// Function to write data to JSON file
+const writeData = (data) => {
+  fs.writeFileSync('orders.json', JSON.stringify(data, null, 2));
+};
+
+// Initialize orders.json if it doesn't exist
+if (!fs.existsSync('orders.json')) {
+  writeData([]);
+}
+
+// Route to handle order creation
+app.post('/create-order', async (req, res) => {
+  try {
+    const { amount, currency, receipt, notes } = req.body;
+
+    const options = {
+      amount: amount * 100, // Convert amount to paise
+      currency,
+      receipt,
+      notes,
+    };
+
+    const order = await razorpay.orders.create(options);
+    
+    // Read current orders, add new order, and write back to the file
+    const orders = readData();
+    orders.push({
+      order_id: order.id,
+      amount: order.amount,
+      currency: order.currency,
+      receipt: order.receipt,
+      status: 'created',
+    });
+    writeData(orders);
+
+    res.json(order); // Send order details to frontend, including order ID
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error creating order');
+  }
+});
+
+// Route to serve the success page
+app.get('/payment-success', (req, res) => {
+  res.sendFile(path.join(__dirname, 'success.html'));
+});
+
+// Route to handle payment verification
+app.post('/verify-payment', (req, res) => {
+  const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+
+  const secret = razorpay.key_secret;
+  const body = razorpay_order_id + '|' + razorpay_payment_id;
+
+  try {
+    const isValidSignature = validateWebhookSignature(body, razorpay_signature, secret);
+    if (isValidSignature) {
+      // Update the order with payment details
+      const orders = readData();
+      const order = orders.find(o => o.order_id === razorpay_order_id);
+      if (order) {
+        order.status = 'paid';
+        order.payment_id = razorpay_payment_id;
+        writeData(orders);
+      }
+      res.status(200).json({ status: 'ok' });
+      console.log("Payment verification successful");
+    } else {
+      res.status(400).json({ status: 'verification_failed' });
+      console.log("Payment verification failed");
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 'error', message: 'Error verifying payment' });
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});

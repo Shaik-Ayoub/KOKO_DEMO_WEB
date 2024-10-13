@@ -1,0 +1,264 @@
+
+
+body {
+  background: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+.navbar {
+  background-color: #008080; /* Teal */
+  color: #ffffff; /* White text color */
+  padding: 15px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  color: #ffffff; /* White text color */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #4CAF50; /* Secondary color for hover */
+}
+
+.pricing-section{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  color: hsl(233, 13%, 49%);
+  margin: 3.3rem 0;
+  text-align: center;
+}
+header > h1{
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.toggle {
+  margin-top: 2rem;
+  color: hsl(234, 14%, 74%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-btn {
+  margin: 0 1rem;
+}
+
+.checkbox {
+  display: none;
+}
+
+.sub {
+  background: linear-gradient(135deg, rgba(163, 168, 240, 1) 0%, rgba(105, 111, 221, 1) 100%);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 1.6rem;
+  width: 3.3rem;
+  border-radius: 1.6rem;
+  padding: 0.3rem;
+  cursor: pointer;
+}
+
+.circle {
+  background-color: #fff;
+  height: 1.4rem;
+  width: 1.4rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.checkbox:checked + .sub {
+  justify-content: flex-end;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 100px; /* Space below navbar */
+  margin-bottom: 10vh;
+}
+
+.card {
+  background-color: #444444; /* Dark gray for consistency */
+  color: #E0E0E0; /* Light gray text color */
+  border-radius: 10px;
+  padding: 20px;
+  width: 280px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card.active {
+  background-color: #008080; /* Teal for active card */
+  color: #ffffff; /* White text for contrast */
+}
+
+.price {
+  font-size: 2.5rem;
+  color: #E0E0E0; /* Light gray */
+  margin: 20px 0;
+}
+
+.card.active .price {
+  color: #ffffff;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  padding: 10px 0;
+  text-align: center;
+}
+
+.pack {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #E0E0E0;
+}
+
+.card.active .pack {
+  color: #ffffff;
+}
+
+.bottom-bar {
+  border-bottom: 1px solid #666666;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.card.active .bottom-bar {
+  border-bottom: 1px solid #ffffff;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #008080;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-top: 15px;
+}
+
+.btn:hover {
+  background-color: #006666; /* Darker teal on hover */
+}
+
+.active-btn {
+  background-color: #ffffff;
+  color: #008080;
+}
+
+.active-btn:hover {
+  background-color: #e0f7fa;
+  color: #444444;
+}
+
+.bottom-bar {
+  border-bottom: 1px solid hsl(240, 8%, 85%);
+  width: 100%;
+  text-align: center;
+}
+
+.card.active .bottom-bar {
+  border-bottom: 1px solid hsla(240, 8%, 85%, 0.5);
+}
+
+.pack {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.footer {
+  background-color: #008080; /* Teal */
+  color: #ffffff; /* White text color */
+  padding: 20px 0;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footer .social-links a {
+  margin: 0 10px;
+  display: inline-block;
+}
+
+.footer .social-links img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
+}
+
+.footer .social-links a:hover img {
+  filter: brightness(0.8) invert(1);
+}
+
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .card.active {
+    transform: scale(1);
+  }
+}

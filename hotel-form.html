@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Information Form</title>
+    <link rel="stylesheet" href="styles2.css">
+    <style>
+        /* Loader icon style */
+        .progress-bar {
+            display: none; /* Initially hidden */
+            width: 100%;
+            height: 20px;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .progress {
+            width: 0%;
+            height: 100%;
+            background-color: #4caf50; /* Green color for the progress */
+            border-radius: 5px;
+            transition: width 0.4s ease;
+        }
+
+        /* Style for deployment message */
+        .form-container {
+            text-align: center;
+        }
+
+        .deployed-message {
+            display: none;
+            font-size: 1.2em;
+            color:  #008080;
+            margin-top: 20px;
+        }
+
+        .call-now-btn {
+            display: none; /* Initially hidden */
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #008080; /* Green background */
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .call-now-btn:hover {
+            background-color: #016161; /* Slightly darker green on hover */
+        }
+
+        .call-now-btn:active {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+
+<body class="index-page">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">YourLogo</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#forms">Form Templates</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <div class="form-container">
+        <h2>Hotel Information Form</h2>
+
+        <!-- General Information Section -->
+        <fieldset>
+            <legend>General Information</legend>
+            <label>Hotel Name:</label>
+            <input type="text" name="hotel_name" value="The Grand Hotel">
+
+            <label>Hotel Address:</label>
+            <input type="text" name="hotel_address" value="123 Main Street">
+
+            <label>City:</label>
+            <input type="text" name="city" value="Metropolis">
+
+            <label>State/Province:</label>
+            <input type="text" name="state" value="New York">
+
+            <label>Zip/Postal Code:</label>
+            <input type="text" name="zip_code" value="10001">
+
+            <label>Country:</label>
+            <input type="text" name="country" value="USA">
+
+            <label>Hotel Phone Number:</label>
+            <input type="tel" name="phone" value="(123) 456-7890">
+
+            <label>Hotel Email:</label>
+            <input type="email" name="email" value="info@thegrandhotel.com">
+
+            <label>Website URL:</label>
+            <input type="url" name="website" value="https://www.thegrandhotel.com">
+        </fieldset>
+
+        <!-- Contact Person Section -->
+        <fieldset>
+            <legend>Contact Person</legend>
+            <label>Name:</label>
+            <input type="text" name="contact_name" value="John Doe">
+
+            <label>Position/Title:</label>
+            <input type="text" name="contact_title" value="General Manager">
+
+            <label>Phone Number:</label>
+            <input type="tel" name="contact_phone" value="(123) 456-7890">
+
+            <label>Email:</label>
+            <input type="email" name="contact_email" value="johndoe@thegrandhotel.com">
+        </fieldset>
+
+        <!-- Hotel Description Section -->
+        <fieldset>
+            <legend>Hotel Description</legend>
+            <label>Brief Description of the Hotel:</label>
+            <textarea
+                name="hotel_description">A luxurious hotel in the heart of the city offering top-notch amenities and services.</textarea>
+        </fieldset>
+
+        <!-- Services and Amenities Section -->
+        <fieldset>
+            <legend>Services and Amenities</legend>
+            <label>Number of Rooms:</label>
+            <input type="number" name="rooms" value="100">
+
+            <label>Types of Rooms Available:</label>
+            <input type="text" name="room_types" value="Single, Double, Suite">
+
+            <label>Check-in Time:</label>
+            <input type="time" name="checkin_time" value="15:00">
+
+            <label>Check-out Time:</label>
+            <input type="time" name="checkout_time" value="12:00">
+
+            <label>Room Service Availability:</label>
+            <input type="text" name="room_service" value="Yes">
+
+            <label>Laundry Service:</label>
+            <input type="text" name="laundry_service" value="Yes">
+
+            <label>Wi-Fi Availability:</label>
+            <input type="text" name="wifi" value="Yes">
+
+            <label>Parking Facilities:</label>
+            <input type="text" name="parking" value="Yes, Valet Parking">
+
+            <label>Pet Policy:</label>
+            <input type="text" name="pet_policy" value="Allowed with restrictions">
+
+            <label>Smoking Policy:</label>
+            <input type="text" name="smoking_policy" value="Non-Smoking Rooms Available">
+
+            <label>Dining Options:</label>
+            <input type="text" name="dining" value="Restaurant, Bar, Cafe">
+
+            <label>Recreational Facilities:</label>
+            <input type="text" name="recreational_facilities" value="Pool, Gym, Spa">
+
+            <label>Accessibility Features:</label>
+            <input type="text" name="accessibility" value="Wheelchair Accessible Rooms">
+        </fieldset>
+
+        <!-- Room Pricing Section -->
+        <fieldset>
+            <legend>Room Pricing</legend>
+            <label>Price of Single Room per Night (Standard Rate):</label>
+            <input type="number" name="price_single_standard" value="150">
+
+            <label>Price of Double Room per Night (Standard Rate):</label>
+            <input type="number" name="price_double_standard" value="200">
+
+            <label>Price of Suite per Night (Standard Rate):</label>
+            <input type="number" name="price_suite_standard" value="350">
+
+            <label>Price of Single Room per Night (Peak Season):</label>
+            <input type="number" name="price_single_peak" value="200">
+
+            <label>Price of Double Room per Night (Peak Season):</label>
+            <input type="number" name="price_double_peak" value="300">
+
+            <label>Price of Suite per Night (Peak Season):</label>
+            <input type="number" name="price_suite_peak" value="500">
+
+            <label>Discounted Rates:</label>
+            <textarea name="discounts">Extended stays, group bookings</textarea>
+
+            <label>Additional Charges:</label>
+            <textarea name="additional_charges">Taxes, Service Fees</textarea>
+        </fieldset>
+
+        <!-- Booking Information Section -->
+        <fieldset>
+            <legend>Booking Information</legend>
+            <label>Accepted Payment Methods:</label>
+            <input type="text" name="payment_methods" value="Credit Card, Cash, Online Payment">
+
+            <label>Cancellation Policy:</label>
+            <textarea name="cancellation_policy">Free cancellation up to 24 hours before check-in</textarea>
+
+            <label>Reservation Contact Details:</label>
+            <input type="text" name="reservation_contact" value="reservations@thegrandhotel.com, (123) 456-7890">
+
+            <label>Special Offers/Packages:</label>
+            <textarea name="special_offers">Family Packages, Honeymoon Packages</textarea>
+
+            <label>Booking Link:</label>
+            <input type="url" name="booking_link" value="https://www.thegrandhotel.com/book">
+        </fieldset>
+
+        <!-- Frequently Asked Questions Section -->
+        <fieldset>
+            <legend>Frequently Asked Questions</legend>
+            <label>What is the best way to get to the hotel from the airport?</label>
+            <input type="text" name="faq1" value="Taxi or Shuttle Service">
+
+            <label>Does the hotel provide airport shuttle services?</label>
+            <input type="text" name="faq2" value="Yes">
+
+            <label>Is breakfast included in the room rate?</label>
+            <input type="text" name="faq3" value="Yes">
+
+            <label>What are the nearby attractions?</label>
+            <input type="text" name="faq4" value="City Center, Museums, Shopping District">
+
+            <label>Is there a concierge service?</label>
+            <input type="text" name="faq5" value="Yes">
+
+            <label>Are there any additional fees or charges that guests should be aware of?</label>
+            <input type="text" name="faq6" value="Resort Fee, Taxes">
+
+            <label>Does the hotel offer meeting or event spaces?</label>
+            <input type="text" name="faq7" value="Yes, Conference Room, Banquet Hall">
+
+            <label>Are there any family-friendly amenities or services?</label>
+            <input type="text" name="faq8" value="Kids Play Area, Childcare Services">
+
+            <label>Is late check-out available?</label>
+            <input type="text" name="faq9" value="Yes, subject to availability">
+
+            <label>Any other information guests frequently ask about:</label>
+            <textarea name="faq10">Pet Policy, Nearby Attractions</textarea>
+        </fieldset>
+
+        <!-- Additional Information Section -->
+        <fieldset>
+            <legend>Additional Information</legend>
+            <label>Any special policies or information not covered above:</label>
+            <textarea name="additional_info">Smoking Policy, Environmental Initiatives</textarea>
+        </fieldset>
+
+        <!-- Submit Button -->
+        <button id="submit-btn" type="submit">Submit</button>
+
+        <div class="progress-bar" id="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <p class="deployed-message" id="deployed-message">Deployed Agent on +1234567890</p>
+
+        <button class="call-now-btn" id="call-now-btn">Call Now</button>
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Your Company. All rights reserved.</p>
+            <!-- <div class="social-links">
+                <a href="#"><img src="https://via.placeholder.com/24" alt="Facebook"></a>
+                <a href="#"><img src="https://via.placeholder.com/24" alt="Twitter"></a>
+                <a href="#"><img src="https://via.placeholder.com/24" alt="LinkedIn"></a>
+            </div> -->
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('toggle');
+        });
+
+        const submitBtn = document.getElementById('submit-btn');
+const progressBar = document.getElementById('progress-bar');
+const progress = document.getElementById('progress');
+const deployedMessage = document.getElementById('deployed-message');
+const callNowBtn = document.getElementById('call-now-btn');
+
+submitBtn.addEventListener('click', () => {
+    // Hide the submit button and show the progress bar
+    submitBtn.style.display = 'none';
+    progressBar.style.display = 'block';
+
+    // Animate the progress bar over 15 seconds
+    let progressPercentage = 0;
+    const interval = setInterval(() => {
+        progressPercentage += 1; // Increase the progress by 1% every 150ms
+        progress.style.width = progressPercentage + '%';
+
+        if (progressPercentage >= 100) {
+            clearInterval(interval);
+            progressBar.style.display = 'none';
+            deployedMessage.style.display = 'block';
+            callNowBtn.style.display = 'inline-block';
+            
+        }
+    }, 150); // 150ms for each 1% progress over 15 seconds
+});
+
+callNowBtn.addEventListener('click', () => {
+    window.location.href = 'tel:+12345567890';
+});
+
+    </script>
+</body>
+
+</html>
