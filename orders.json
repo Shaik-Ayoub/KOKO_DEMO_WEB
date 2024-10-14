@@ -51,5 +51,19 @@
     "currency": "EUR",
     "receipt": "Professional",
     "status": "created"
+  },
+  {
+    "order_id": "order_P8sTQSwbFnNsDu",
+    "amount": 49990,
+    "currency": "EUR",
+    "receipt": "Basic",
+    "status": "created"
+  },
+  {
+    "order_id": "order_P8sTY8FDEQpyI8",
+    "amount": 4999,
+    "currency": "EUR",
+    "receipt": "Basic",
+    "status": "created"
   }
 ]

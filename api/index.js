@@ -15,9 +15,10 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Serve static files from the public directory
-app.use(express.static(path.join(__dirname, '..', 'public')));
+// Serve static files from the parent directory
+app.use(express.static(path.join(__dirname, '..')));
 
+// Initialize Razorpay instance
 const razorpay = new Razorpay({
   key_id: razorpayKeyId,
   key_secret: razorpayKeySecret,
@@ -46,7 +47,7 @@ if (!fs.existsSync(path.join(__dirname, '..', 'orders.json'))) {
 
 // Root route to serve index.html
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
 // Route to handle order creation
@@ -63,6 +64,7 @@ app.post('/create-order', async (req, res) => {
 
     const order = await razorpay.orders.create(options);
     
+    // Read current orders, add new order, and write back to the file
     const orders = readData();
     orders.push({
       order_id: order.id,
@@ -82,7 +84,7 @@ app.post('/create-order', async (req, res) => {
 
 // Route to serve the success page
 app.get('/payment-success', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'public', 'success.html'));
+  res.sendFile(path.join(__dirname, '..', 'success.html'));
 });
 
 // Route to handle payment verification
@@ -95,6 +97,7 @@ app.post('/verify-payment', (req, res) => {
   try {
     const isValidSignature = validateWebhookSignature(body, razorpay_signature, secret);
     if (isValidSignature) {
+      // Update the order with payment details
       const orders = readData();
       const order = orders.find(o => o.order_id === razorpay_order_id);
       if (order) {
