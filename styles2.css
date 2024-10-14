@@ -60,6 +60,11 @@ html {
     color: #ffffff;
 }
 
+.red-text {
+    color: rgb(237, 54, 91);;
+}
+
+
 .nav-links {
     list-style: none;
     display: flex;
@@ -306,6 +311,54 @@ html {
     color: #487e7e; /* Use primary color for hover */
 }
 
+.demo_container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #487e7e;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.demo_container h2 {
+    font-size: 2em;
+    color: #091d1d;
+    margin-bottom: 20px;
+}
+
+.demo_working {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card1 {
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    min-width: 220px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.card1 h3 {
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+audio {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
 /* Responsive Styles for Index Page */
 @media (max-width: 768px) {
     .index-page .nav-links {
@@ -369,6 +422,16 @@ html {
     .index-page .forms-grid {
         flex-direction: column;
         align-items: center;
+    }
+
+    .demo_working {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card1 {
+        width: 90%;
+        max-width: 400px;
     }
 }
 
