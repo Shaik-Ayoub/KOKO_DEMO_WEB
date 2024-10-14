@@ -15,10 +15,10 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Serve static files
-app.use(express.static(path.join(__dirname)));
+// Serve static files from the parent directory
+app.use(express.static(path.join(__dirname, '..')));
 
-// Replace with your Razorpay credentials
+// Initialize Razorpay instance
 const razorpay = new Razorpay({
   key_id: razorpayKeyId,
   key_secret: razorpayKeySecret,
@@ -26,8 +26,9 @@ const razorpay = new Razorpay({
 
 // Function to read data from JSON file
 const readData = () => {
-  if (fs.existsSync('orders.json')) {
-    const data = fs.readFileSync('orders.json');
+  const filePath = path.join(__dirname, '..', 'orders.json');
+  if (fs.existsSync(filePath)) {
+    const data = fs.readFileSync(filePath);
     return JSON.parse(data);
   }
   return [];
@@ -35,13 +36,19 @@ const readData = () => {
 
 // Function to write data to JSON file
 const writeData = (data) => {
-  fs.writeFileSync('orders.json', JSON.stringify(data, null, 2));
+  const filePath = path.join(__dirname, '..', 'orders.json');
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 };
 
 // Initialize orders.json if it doesn't exist
-if (!fs.existsSync('orders.json')) {
+if (!fs.existsSync(path.join(__dirname, '..', 'orders.json'))) {
   writeData([]);
 }
+
+// Root route to serve index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'index.html'));
+});
 
 // Route to handle order creation
 app.post('/create-order', async (req, res) => {
@@ -49,7 +56,7 @@ app.post('/create-order', async (req, res) => {
     const { amount, currency, receipt, notes } = req.body;
 
     const options = {
-      amount: amount, // Convert amount to paise
+      amount: amount, // amount in the smallest currency unit
       currency,
       receipt,
       notes,
@@ -77,7 +84,7 @@ app.post('/create-order', async (req, res) => {
 
 // Route to serve the success page
 app.get('/payment-success', (req, res) => {
-  res.sendFile(path.join(__dirname, 'success.html'));
+  res.sendFile(path.join(__dirname, '..', 'success.html'));
 });
 
 // Route to handle payment verification
